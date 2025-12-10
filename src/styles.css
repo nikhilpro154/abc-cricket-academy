@@ -1,1 +1,87 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global Dark Theme */
+:root {
+  --bg: #0b0b0b;
+  --surface: #131313;
+  --surface-2: #1a1a1a;
+  --border: #262626;
+  --text: #e5e7eb;
+  --text-muted: #9ca3af;
+  --accent: #e11d48; /* red */
+  --accent-hover: #f43f5e;
+  --shadow: rgba(0,0,0,0.6);
+}
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+a { color: var(--text); text-decoration: none; }
+a:hover { color: var(--accent-hover); }
+
+/* Utility */
+.muted { color: var(--text-muted); }
+
+/* Dark theme overrides (global) */
+/* Navbar & Footer */
+.navbar { background-color: var(--surface-2) !important; box-shadow: 0 2px 8px var(--shadow) !important; border-bottom: 1px solid var(--border); }
+.logo { color: var(--text) !important; }
+.nav-menu a { color: var(--text) !important; transition: color .2s, background .2s, border-color .2s; }
+.nav-menu a:hover { color: var(--accent-hover) !important; }
+.nav-menu a.active { color: var(--accent) !important; border-bottom: 2px solid var(--accent) !important; }
+.register-btn { background-color: var(--accent) !important; border-radius: 6px; }
+.register-btn:hover { background-color: var(--accent-hover) !important; }
+.footer { background-color: var(--surface-2) !important; color: var(--text) !important; border-top: 1px solid var(--border); }
+
+/* Home */
+.home-container { background: var(--bg); }
+.hero-section { color: var(--text); }
+.services-section h2, .hero-content h1 { color: var(--text); }
+.service-card { background: var(--surface); border: 1px solid var(--border); box-shadow: 0 4px 16px var(--shadow); }
+.service-card h3 { color: var(--text); }
+.service-card p { color: var(--text-muted); }
+.cta-section { background-color: var(--surface); }
+.cta-section h2 { color: var(--text); }
+.cta-section p { color: var(--text-muted); }
+.cta-button { background-color: var(--accent); color: var(--text); }
+.cta-button:hover { background-color: var(--accent-hover); }
+
+/* About */
+.about-container { background: var(--bg); }
+.facilities-section h2, .intro-section h1, .why-section h2 { color: var(--text); }
+.feature-item { background: var(--surface); border: 1px solid var(--border); box-shadow: 0 4px 16px var(--shadow); }
+.feature-item h3 { color: var(--text); }
+.feature-item p, .intro-section p, .why-content li { color: var(--text-muted); }
+.why-section { background-color: var(--surface); }
+.why-content li { background: var(--surface); border: 1px solid var(--border); }
+
+/* Contact */
+.contact-container { background: var(--bg); }
+.contact-card { background: var(--surface); border: 1px solid var(--border); box-shadow: 0 4px 16px var(--shadow); }
+.contact-card h3 { color: var(--text); }
+.contact-card p { color: var(--text-muted); }
+.contact-form { background: var(--surface); border: 1px solid var(--border); }
+.contact-form-container h2, .contact-info-section h1 { color: var(--text); }
+.contact-form .form-group input, .contact-form .form-group textarea { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); }
+.contact-form .form-group input:focus, .contact-form .form-group textarea:focus { border-color: var(--accent); }
+.submit-btn { background-color: var(--accent); color: var(--text); }
+.submit-btn:hover:not(:disabled) { background-color: var(--accent-hover); }
+.success-message { background-color: rgba(16,185,129,0.12); color: #86efac; border-color: rgba(22,163,74,0.35); }
+.hours-section { background-color: var(--surface); }
+.hours-section h2, .hours-content p { color: var(--text); }
+
+/* Register */
+.register-container { background: var(--bg); }
+.register-form-section { background-color: var(--surface); }
+.form-container { background: var(--surface); border: 1px solid var(--border); box-shadow: 0 4px 16px var(--shadow); }
+.form-container h2 { color: var(--text); }
+.form-group label { color: var(--text); }
+.form-group input, .form-group select, .form-group textarea { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent); }
+.submit-btn, .back-btn { background-color: var(--accent); color: var(--text); }
+.submit-btn:hover:not(:disabled), .back-btn:hover { background-color: var(--accent-hover); }
+.success-box { background: var(--surface); color: var(--text); }
+.success-icon { background-color: var(--accent); }
