@@ -1,0 +1,113 @@
+<div class="details-page">
+  <h1>Match Scorecard</h1>
+  <div class="state" *ngIf="loading">Loading scorecard...</div>
+  <div class="state error" *ngIf="error">{{ error }}</div>
+
+  <div *ngIf="!loading && !error">
+    <div class="status" *ngIf="status">{{ status }}</div>
+
+    <div class="innings" *ngFor="let inn of displayInnings; let i = index">
+      <div class="innings-header">
+        <div class="team-title">{{ inn.title }}</div>
+      </div>
+
+      <div class="section">
+        <div class="table">
+          <div class="tr th">
+            <div class="td name">Batter</div>
+            <div class="td howout">How Out</div>
+            <div class="td num">R</div>
+            <div class="td num">B</div>
+            <div class="td num">4s</div>
+            <div class="td num">6s</div>
+            <div class="td num">SR</div>
+          </div>
+          <div class="tr" *ngFor="let b of inn.batsman">
+            <div class="td name">{{ b.name }}</div>
+            <div class="td howout">{{ b.outdec || 'not out' }}</div>
+            <div class="td num">{{ b.runs }}</div>
+            <div class="td num">{{ b.balls }}</div>
+            <div class="td num">{{ b.fours }}</div>
+            <div class="td num">{{ b.sixes }}</div>
+            <div class="td num">{{ b.strkrate }}</div>
+          </div>
+
+          <div class="tr extras-row">
+            <div class="td name">Extras</div>
+            <div class="td howout detail">(b {{ inn.extras?.byes || 0 }}, lb {{ inn.extras?.legbyes || 0 }}, w {{ inn.extras?.wides || 0 }}, nb {{ inn.extras?.noballs || 0 }}, p {{ inn.extras?.penalty || 0 }})</div>
+            <div class="td num">{{ inn.extras?.total || 0 }}</div>
+            <div class="td num"></div>
+            <div class="td num"></div>
+            <div class="td num"></div>
+            <div class="td num"></div>
+          </div>
+
+          <div class="tr total-row">
+            <div class="td name">Total</div>
+            <div class="td howout detail">{{ inn.score }}-{{ inn.wickets }} ({{ inn.overs }} Overs, RR: {{ inn.runrate }})</div>
+            <div class="td num">{{ inn.score }}</div>
+            <div class="td num"></div>
+            <div class="td num"></div>
+            <div class="td num"></div>
+            <div class="td num"></div>
+          </div>
+        </div>
+
+        <div class="did-not-bat" *ngIf="inn.didNotBat?.length">
+          <strong>Did not Bat</strong>:
+          <span class="dnb-list">{{ inn.didNotBat.join(', ') }}</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="subheading">Bowler</div>
+        <div class="table">
+          <div class="tr th">
+            <div class="td name">Bowler</div>
+            <div class="td num">O</div>
+            <div class="td num">M</div>
+            <div class="td num">R</div>
+            <div class="td num">W</div>
+            <div class="td num">ECO</div>
+          </div>
+          <div class="tr" *ngFor="let bw of inn.bowler">
+            <div class="td name">{{ bw.name }}</div>
+            <div class="td num">{{ bw.overs }}</div>
+            <div class="td num">{{ bw.maidens }}</div>
+            <div class="td num">{{ bw.runs }}</div>
+            <div class="td num">{{ bw.wickets }}</div>
+            <div class="td num">{{ bw.economy }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" *ngIf="inn.fowList?.length">
+        <div class="subheading">Fall of Wickets</div>
+        <div class="fow">
+          <div class="fow-row" *ngFor="let f of inn.fowList">
+            <div class="fow-name">{{ f.batsmanname }}</div>
+            <div class="fow-score">{{ f.runs }}-{{ f.batsmanname ? '' : '' }}</div>
+            <div class="fow-over">Over {{ f.overnbr }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" *ngIf="inn.partnerships?.length">
+        <div class="subheading">Partnerships</div>
+        <div class="partnerships">
+          <div class="part-row" *ngFor="let p of inn.partnerships">
+            <div class="pair">
+              <span class="pname">{{ p.bat1name }}</span>
+              <span class="runs">{{ p.bat1runs }}({{ p.bat1balls }})</span>
+              <span> & </span>
+              <span class="pname">{{ p.bat2name }}</span>
+              <span class="runs">{{ p.bat2runs }}({{ p.bat2balls }})</span>
+            </div>
+            <div class="total">{{ p.totalruns }} ({{ p.totalballs }})</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

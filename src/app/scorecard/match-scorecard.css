@@ -1,0 +1,20 @@
+.scorecard-page { padding: 24px; }
+.scorecard-page h1 { margin: 0 0 16px; font-size: 24px; }
+.state { padding: 12px; color: #333; }
+.state.error { color: #b00020; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.card { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; cursor: pointer; transition: box-shadow .2s, transform .2s; }
+.card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); transform: translateY(-2px); }
+
+.card-header { display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; }
+.card-header .series { font-weight: 600; color: #111827; }
+.card-header .format { color: #6b7280; font-size: 12px; }
+
+.teams { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+.team { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.team .name { font-weight: 600; color: #111827; }
+.team .score { color: #111827; }
+
+.meta { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #374151; }
+.meta .status { color: #047857; font-weight: 600; }
