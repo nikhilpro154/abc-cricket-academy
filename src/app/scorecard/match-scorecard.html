@@ -1,0 +1,32 @@
+<div class="scorecard-page">
+  <h1>Recent Matches</h1>
+
+  <div class="state" *ngIf="loading">Loading matches...</div>
+  <div class="state error" *ngIf="error">{{ error }}</div>
+  <div class="state" *ngIf="!loading && !error">{{ matches.length }} matches</div>
+
+  <div class="state" *ngIf="!loading && !error && matches.length === 0">No matches found.</div>
+
+  <div class="grid" *ngIf="!loading && !error && matches.length > 0">
+    <div class="card" *ngFor="let m of matches" (click)="openDetails(m.matchId)">
+      <div class="card-header">
+        <div class="series">{{ m.seriesName }}</div>
+        <div class="format">{{ m.matchFormat }} • {{ m.matchDesc }}</div>
+      </div>
+      <div class="teams">
+        <div class="team">
+          <div class="name">{{ m.team1.teamSName }}</div>
+          <div class="score" *ngIf="m.team1Score">{{ m.team1Score }}</div>
+        </div>
+        <div class="team">
+          <div class="name">{{ m.team2.teamSName }}</div>
+          <div class="score" *ngIf="m.team2Score">{{ m.team2Score }}</div>
+        </div>
+      </div>
+      <div class="meta">
+        <div class="venue">{{ m.venueInfo.ground }}, {{ m.venueInfo.city }}</div>
+        <div class="status">{{ m.status }}</div>
+      </div>
+    </div>
+  </div>
+</div>
