@@ -1,0 +1,61 @@
+<div class="contact-container">
+  <!-- Section 1: Contact Information -->
+  <section class="contact-info-section">
+    <h1>Contact Us</h1>
+    <p>Get in touch with us for any queries or information</p>
+  </section>
+
+  <!-- Section 2: Contact Details & Form -->
+  <section class="contact-details-section">
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>📞 Phone</h3>
+        <p>+91 98765 43210</p>
+        <p>+91 98765 43211</p>
+      </div>
+      <div class="contact-card">
+        <h3>📧 Email</h3>
+        <p>info@abccricket.com</p>
+        <p>admissions@abccricket.com</p>
+      </div>
+      <div class="contact-card">
+        <h3>📍 Address</h3>
+        <p>123 Cricket Lane</p>
+        <p>Nagpur, Maharashtra 440001</p>
+      </div>
+    </div>
+
+    <div class="contact-form-container">
+      <h2>Send Us a Message</h2>
+      <form class="contact-form" (ngSubmit)="onSubmit()" #contactForm="ngForm">
+        <div class="form-group">
+          <input type="text" placeholder="Your Name" required [(ngModel)]="formData.name" name="name">
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Your Email" required [(ngModel)]="formData.email" name="email">
+        </div>
+        <div class="form-group">
+          <input type="tel" placeholder="Your Phone" required [(ngModel)]="formData.phone" name="phone">
+        </div>
+        <div class="form-group">
+          <textarea placeholder="Your Message" rows="5" required [(ngModel)]="formData.message" name="message"></textarea>
+        </div>
+        <button type="submit" class="submit-btn" [disabled]="!contactForm.form.valid">Send Message</button>
+      </form>
+      
+      <div class="success-message" *ngIf="showSuccess">
+        <p>✓ Thank you! Your message has been sent successfully. We'll get back to you soon.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Location & Hours -->
+  <section class="hours-section">
+    <h2>Operating Hours</h2>
+    <div class="hours-content">
+      <p><strong>Monday - Friday:</strong> 6:00 AM - 9:00 PM</p>
+      <p><strong>Saturday - Sunday:</strong> 6:00 AM - 8:00 PM</p>
+      <p><strong>Public Holidays:</strong> 7:00 AM - 6:00 PM</p>
+    </div>
+  </section>
+</div>

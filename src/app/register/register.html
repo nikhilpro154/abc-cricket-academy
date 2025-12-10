@@ -1,0 +1,75 @@
+<div class="register-container">
+  <!-- Section 1: Registration Header -->
+  <section class="register-header-section">
+    <h1>Student Registration</h1>
+    <p>Join ABC Cricket Academy and start your cricket journey today!</p>
+  </section>
+
+  <!-- Section 2: Registration Form -->
+  <section class="register-form-section">
+    <div class="form-container">
+      <h2>Registration Form</h2>
+      <form class="registration-form" (ngSubmit)="onSubmit()" #registrationForm="ngForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" placeholder="Enter your full name" required [(ngModel)]="formData.fullName" name="fullName">
+          </div>
+          <div class="form-group">
+            <label>Age *</label>
+            <input type="number" placeholder="Enter your age" required [(ngModel)]="formData.age" name="age" min="5" max="100">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email *</label>
+            <input type="email" placeholder="Enter your email" required [(ngModel)]="formData.email" name="email">
+          </div>
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <input type="tel" placeholder="Enter your phone number" required [(ngModel)]="formData.phone" name="phone">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Program Selection *</label>
+          <select required [(ngModel)]="formData.program" name="program">
+            <option value="">Select a program</option>
+            <option value="cricket-coaching">Cricket Coaching</option>
+            <option value="one-to-one">One-to-One Sessions</option>
+            <option value="tournament-prep">Tournament Preparation</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Cricket Experience Level *</label>
+          <select required [(ngModel)]="formData.experience" name="experience">
+            <option value="">Select experience level</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Additional Information</label>
+          <textarea placeholder="Tell us about your cricket goals or any special requirements" rows="4" [(ngModel)]="formData.additionalInfo" name="additionalInfo"></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn" [disabled]="!registrationForm.form.valid">Register Now</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Section 3: Success Message -->
+  <section class="success-section" *ngIf="showSuccess">
+    <div class="success-box">
+      <div class="success-icon">✓</div>
+      <h2>Registration Successful!</h2>
+      <p>Thank you for registering with ABC Cricket Academy.</p>
+      <p>We have received your application and will contact you within 24-48 hours.</p>
+      <button class="back-btn" routerLink="/home">Back to Home</button>
+    </div>
+  </section>
+</div>
